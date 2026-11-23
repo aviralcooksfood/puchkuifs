@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Aadya’s day-by-day UPSC Prelims 2027 study tracker.">
+<title>Aadya’s Study Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script defer src="plan.js"></script>
+<script defer src="tracker.js"></script>
+<script defer src="atlas.js"></script>
+<script defer src="syllabus-data.js"></script>
+<script defer src="rewards.js"></script>
+<script defer src="records.js"></script>
+<script defer src="desk.js"></script>
+<script defer src="choices.js"></script>
+<script defer src="pomodoro.js"></script>
+</head>
+<body>
+<header><div class="wrap bar"><a href="#desk" class="brand"><span class="brand-mark" aria-hidden="true">♡</span>Aadya’s Study Atlas</a><nav aria-label="Main navigation"><a href="#desk">Study desk</a><a href="#syllabus">Syllabus</a><a href="#journal">Journal</a><a href="#facts">Facts</a><a href="#map">Map</a></nav></div></header>
+<main class="wrap">
+<section id="desk" class="view">
+<div class="desk-heading">
+  <div class="desk-intro">
+    <p id="today-date" class="eyebrow"></p>
+    <h1>Aadya’s study <em>desk.</em><span id="desk-sticker" role="img" hidden></span></h1>
+    <button id="write" type="button"><span aria-hidden="true">♡</span> Write a note</button>
+  </div>
+  <!-- Emblem artwork: https://commons.wikimedia.org/wiki/File:Emblem_of_India.svg -->
+  <img class="keepsake" src="assets/study-keepsake.webp" width="302" height="181" alt="India’s national emblem on a cream stamp with a pink bow">
+</div>
+<div class="dashboard schedule-grid"><section class="panel focus" aria-labelledby="day-plan-title">
+<div class="week-head timetable-head"><h2 id="day-plan-title">Day timetable</h2><button type="button" id="switch-timetable" aria-controls="my-topics pdf-blocks">Reset to original day</button></div><div class="plan-builder"><section class="next-card"><div class="heart-art" aria-hidden="true">♡</div><div class="choice-top"><p class="eyebrow" id="choice-date"></p><label>Plan for <input type="date" id="choice-day"></label></div><form id="choose-form"><div class="choice-fields"><label>Subject<select id="choose-subject"></select></label><label>Topic<select id="choose-topic"></select></label></div><button class="primary" type="submit">Add to my day</button></form><p id="choice-message" role="status"></p></section></div>
+<div id="my-topics"></div><div id="pdf-blocks"><h3>Original schedule</h3><div class="focus-top"><p id="focus-date" class="eyebrow"></p><span id="hours" class="pill"></span></div>
+<h2 id="focus-title"></h2><p class="phase" id="phase"></p>
+<div class="lens"><label for="lens">A way into this topic</label><select id="lens"><option value="why">Follow the why</option><option value="low">Low-energy start</option><option value="deep">Deep dive</option></select><p id="lens-prompt"></p><button type="button" id="topic-map">Explore connections</button></div>
+<div id="tasks"></div><button type="button" id="next-action"></button>
+<label class="status">Original blocks <select id="status"><option value="">To do</option><option>Done</option><option>Partial</option><option>Skipped</option></select></label>
+<a class="more-history" href="#history" data-history="Study">More history</a><p id="saved" role="status">Progress is saved in this browser.</p>
+</div></section>
+<section class="panel timer-card" aria-labelledby="timer-title"><div class="week-head"><h2 id="timer-title">Focus timer</h2><span class="eyebrow" id="timer-phase">Pomodoro</span></div><p id="timer-topic"></p><div class="dial" id="timer-dial"><strong id="timer-clock" role="timer">25:00</strong></div><label for="timer-length">Focus length</label><select id="timer-length"><option value="5">5 min · Quick start</option><option value="25" selected>25 min · Pomodoro</option><option value="45">45 min · Deep focus</option></select><div class="timer-controls"><button id="timer-toggle" class="primary">Start focus</button><button id="timer-reset">Reset</button></div><a class="more-history" href="#history" data-history="Focus">More history</a><p id="timer-message" role="status"></p></section></div><section class="panel recent"><h2>What you’ve done</h2><a class="more-history" href="#history" data-history="All">More history</a><div id="recent-list" aria-live="polite"></div></section>
+<section class="panel rewards" aria-labelledby="rewards-heading">
+<div class="reward-summary"><span class="credit-coin" aria-hidden="true">♡</span><div><h2 id="rewards-heading">Study credits</h2><p>Earn 10 credits the first time you complete a syllabus topic.</p></div><strong id="credit-total"></strong></div>
+<div class="next-reward"><div id="reward-target"></div><progress id="reward-meter" aria-label="Credits toward next sticker"></progress></div>
+<details id="sticker-book"><summary>Desk stickers <span id="sticker-count"></span></summary><p>Pick an unlocked sticker to display beside your desk title.</p><div id="stickers"></div></details>
+<a class="more-history" href="#history" data-history="Credits">More history</a><p id="reward-message" role="status" aria-live="polite"></p></section>
+<div id="memory" class="memory" hidden></div>
+<section class="metrics" aria-label="Goals and progress">
+<div class="metric"><p>Days to your target</p><strong id="target"></strong><small>10 May 2027</small></div>
+<div class="metric"><p>Days to Prelims</p><strong id="exam"></strong><small>23 May 2027 · timetable date</small></div>
+<div class="metric"><p>Learning days complete</p><strong id="count"></strong><progress id="progress" max="64" value="0" aria-label="Learning days complete"></progress></div>
+</section>
+<section class="panel pace"><div class="week-head"><h2>Subject progress</h2><a href="#syllabus">Full syllabus</a></div><p class="chart-legend">Pink shows topics completed. The marker shows the target through yesterday.</p><div id="charts"></div></section>
+<section class="panel week" aria-labelledby="week-title">
+<div class="week-head"><h2 id="week-title">Study week</h2><a class="more-history" href="#history" data-history="Study">More history</a><button type="button" id="today">Today</button></div>
+<div class="week-nav"><button type="button" id="prev" aria-label="Previous week">‹</button><p id="range"></p><button type="button" id="next" aria-label="Next week">›</button></div>
+<div id="days"></div>
+</section>
+</section>
+<section id="journal" class="view" hidden>
+<div class="journal-cover"><div><p class="eyebrow">Aadya’s notebook</p><h1>Field <em>journal.</em></h1></div><div class="paper-stack" aria-hidden="true"><span>♡</span></div></div>
+<div class="journal-grid"><form class="panel" id="note-form"><div class="week-head"><h2 id="form-title">New field note</h2><button type="button" id="new-note">New</button></div>
+<fieldset class="note-kinds"><legend>What are you capturing?</legend><label><input type="radio" name="kind" value="Connection" checked>Connection</label><label><input type="radio" name="kind" value="Question">Question</label><label><input type="radio" name="kind" value="Small win">Small win</label></fieldset>
+<label><span id="title-prompt">What clicked?</span><input id="note-title" required maxlength="160" placeholder="Why does a rate hike affect the rupee?"></label>
+<label>What connects it?<textarea id="note-body" rows="4" placeholder="Explain it in your own words. A guess is a place to start."></textarea></label>
+<label>Question to return to<input id="note-question" maxlength="300" placeholder="What would happen if…"></label>
+<details class="note-context"><summary>Study day &amp; linked subjects</summary><label>Study day<select id="note-day" required></select></label><fieldset><legend>Linked subjects</legend><div id="tags"></div></fieldset></details>
+<button class="primary" type="submit">Save note</button><p id="note-status" role="status"></p><div id="note-links"></div></form>
+<div class="journal-side"><section class="recall-card"><p class="eyebrow">Recall practice</p><h2 id="recall-prompt"></h2><p id="recall-answer" hidden></p><div><button type="button" id="recall-reveal">Reveal note</button><button type="button" id="recall-next">Next question</button></div></section><section class="panel"><div class="week-head"><h2>Your notes</h2><a class="more-history" href="#history" data-history="Journal">More history</a></div><label>Search your journal<input type="search" id="search" placeholder="A subject, question, or phrase"></label><label>Show<select id="kind-filter"><option>All notes</option><option>Connection</option><option>Question</option><option>Small win</option></select></label><div id="note-list"></div></section></div></div>
+</section>
+<section id="map" class="view" hidden><p class="eyebrow">Subject connections</p><h1>Knowledge <em>map.</em></h1>
+<div class="map-grid"><section class="panel map-panel"><label>Explore a subject<select id="subject"></select></label><div class="network" id="network"></div><p class="map-key">Select a connected subject to explore its links.</p></section>
+<section class="panel"><h2 id="detail-title"></h2><div id="detail"></div></section></div></section>
+<section id="syllabus" class="view" hidden><p class="eyebrow">UPSC Prelims 2027</p><h1>Your full <em>syllabus.</em></h1>
+<div class="syllabus-tools"><label>Find a topic<input id="topic-search" type="search" placeholder="Search subjects, topics or subtopics"></label><p id="coverage"></p><a class="more-history" href="#history" data-history="Study">More history</a></div><div id="syllabus-list"></div><p id="topic-feedback" role="status"></p></section><section id="facts" class="view" hidden><div class="journal-cover"><div><p class="eyebrow">Aadya’s notebook</p><h1>Fact <em>book.</em></h1></div><div class="paper-stack" aria-hidden="true"><span>♡</span></div></div>
+<div class="journal-grid"><form class="panel" id="fact-form"><div class="week-head"><h2 id="fact-heading">Save a fact</h2><button type="button" id="fact-new">New</button></div>
+<label>Fact learnt<textarea required id="fact-text" rows="4" placeholder="What do you want to remember?"></textarea></label>
+<label>Subject<select id="fact-subject"></select></label><label>Source or page <small>(optional)</small><input id="fact-source" placeholder="Book, article or page number"></label>
+<button class="primary" type="submit">Save fact</button><p id="fact-status" role="status"></p></form>
+<section class="panel"><div class="week-head"><h2>Saved facts</h2><a class="more-history" href="#history" data-history="Facts">More history</a></div><label>Search facts<input type="search" id="fact-search" placeholder="Fact, subject or source"></label><div id="fact-list"></div></section></div></section>
+<section id="history" class="view" hidden><p class="eyebrow">Study desk</p><h1>Your <em>history.</em></h1><div class="panel"><div class="history-tools"><label>Activity<select id="history-filter"><option>All</option><option>Study</option><option>Journal</option><option>Facts</option><option>Focus</option><option>Credits</option></select></label><label>Search history<input id="history-search" type="search" placeholder="Topic, subject or date"></label></div><div id="history-list"></div></div></section></main>
+<footer class="wrap dedication">
+  <div class="ribbon-rule" aria-hidden="true"></div>
+  <p>Designed for <em>Puchku</em> by <em>Aviral</em> with love &lt;3</p>
+</footer>
+</body>
+</html>
